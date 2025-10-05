@@ -1,1 +1,4 @@
 fastapi
+uvicorn[standard]  # Installs uvicorn with necessary extras
+pandas             # For handling the CSV and filtering
+
