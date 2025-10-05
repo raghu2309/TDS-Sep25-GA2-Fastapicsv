@@ -10,6 +10,12 @@
     "astral-sh.uv",
     "ms-python.python"
   ],
-  "postCreateCommand": "uv pip install -r requirements.txt",
+  "postCreateCommand":  [
+      "uv pip install -r requirements.txt",
+      // The next command finds where uv installs executables and adds it to the PATH
+      "UV_BIN_PATH=$(uv run python -c 'import site; print(site.USER_BASE)')/bin",
+      "echo 'export PATH=\"$UV_BIN_PATH:$PATH\"' >> ~/.bashrc",
+      "echo 'export PATH=\"$UV_BIN_PATH:$PATH\"' >> ~/.zshrc"
+  ],
   "remoteUser": "codespace"  // <-- CHANGED from "vscode" to "codespace"
 }
